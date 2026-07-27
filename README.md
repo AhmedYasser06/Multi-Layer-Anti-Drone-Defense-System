@@ -183,9 +183,7 @@ Press `q` to quit — the `finally` block safely disables the laser/jammer and r
 
 ## Demo Video
 
-<!--
 https://github.com/user-attachments/assets/fdaeaf48-755c-4317-a3a3-448422952287
--->
 
 ## Roadmap
 
