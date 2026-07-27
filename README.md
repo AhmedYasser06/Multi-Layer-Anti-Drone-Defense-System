@@ -22,8 +22,7 @@ The system detects, classifies, tracks, and prioritizes aerial threats (drones v
 - [Getting Started](#getting-started)
 - [Hardware Setup](#hardware-setup)
 - [Roadmap](#roadmap)
-- [License](#license)
-
+  
 ---
 
 ## Overview
