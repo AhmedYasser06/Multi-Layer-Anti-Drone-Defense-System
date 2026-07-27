@@ -1,0 +1,11 @@
+ultralytics>=8.4.0
+opencv-python>=4.9.0
+pyserial>=3.5
+numpy>=1.26
+
+# Optional, only if you switch tracker.py to the real Deep SORT backend:
+# deep-sort-realtime>=1.3.2
+
+# Optional, only if you want to run the .onnx exports instead of .pt
+# via onnxruntime directly instead of ultralytics' built-in ONNX backend:
+# onnxruntime>=1.17.0

@@ -1,0 +1,4 @@
+Place your trained weights here:
+  rgb_multiclass_yolov8s_best.pt
+  thermal_yolov8_best.pt
+(paths are set in anti_drone_pipeline/config.py)
