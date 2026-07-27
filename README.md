@@ -17,7 +17,7 @@ The system detects, classifies, tracks, and prioritizes aerial threats (drones v
   - [2. Sensor Fusion](#2-sensor-fusion)
   - [3. NMSE Threat Prioritization](#3-nmse-threat-prioritization)
   - [4. PID Visual Servoing + RL Gain Tuning](#4-pid-visual-servoing--rl-gain-tuning)
-- [Demo Video](#demo-video)
+- [System-Concept-Demonstration](#System-Concept-Demonstration)
 - [Model Performance](#model-performance)
 - [Getting Started](#getting-started)
 - [Hardware Setup](#hardware-setup)
@@ -116,7 +116,7 @@ The resulting max-priority heap answers, every frame, *"which target should be e
 ### 4. PID Visual Servoing + RL Gain Tuning
 The gimbal controller uses full PID per axis (P for current error, I for persistent drift, D for overshoot damping, with anti-windup clamping). An optional tabular Q-learning agent can adaptively scale the proportional gain based on recent tracking error trends — it only affects *how aggressively* the gimbal chases the already-selected target, never *which* target is chosen, keeping engagement logic deterministic and auditable.
 
-## Demo Video
+## System Concept Demonstration
 
 https://github.com/user-attachments/assets/fdaeaf48-755c-4317-a3a3-448422952287
 
