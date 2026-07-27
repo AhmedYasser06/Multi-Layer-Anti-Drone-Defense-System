@@ -17,10 +17,10 @@ The system detects, classifies, tracks, and prioritizes aerial threats (drones v
   - [2. Sensor Fusion](#2-sensor-fusion)
   - [3. NMSE Threat Prioritization](#3-nmse-threat-prioritization)
   - [4. PID Visual Servoing + RL Gain Tuning](#4-pid-visual-servoing--rl-gain-tuning)
+- [Demo Video](#demo-video)
 - [Model Performance](#model-performance)
 - [Getting Started](#getting-started)
 - [Hardware Setup](#hardware-setup)
-- [Demo Video](#demo-video)
 - [Roadmap](#roadmap)
 - [License](#license)
 
@@ -117,6 +117,10 @@ The resulting max-priority heap answers, every frame, *"which target should be e
 ### 4. PID Visual Servoing + RL Gain Tuning
 The gimbal controller uses full PID per axis (P for current error, I for persistent drift, D for overshoot damping, with anti-windup clamping). An optional tabular Q-learning agent can adaptively scale the proportional gain based on recent tracking error trends — it only affects *how aggressively* the gimbal chases the already-selected target, never *which* target is chosen, keeping engagement logic deterministic and auditable.
 
+## Demo Video
+
+https://github.com/user-attachments/assets/fdaeaf48-755c-4317-a3a3-448422952287
+
 ## Model Performance
 
 RGB 4-class YOLOv8s detector — trained for 100 epochs:
@@ -180,10 +184,6 @@ Press `q` to quit — the `finally` block safely disables the laser/jammer and r
 - **Pan-tilt gimbal (2 servos)** — carries the RGB + thermal cameras rigidly mounted together
 - Flash `firmware/anti_drone_controller/anti_drone_controller.ino` via the Arduino IDE (`Servo.h`, built-in library only)
 - Full pin mapping is defined at the top of the `.ino` file
-
-## Demo Video
-
-https://github.com/user-attachments/assets/fdaeaf48-755c-4317-a3a3-448422952287
 
 ## Roadmap
 
