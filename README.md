@@ -1,12 +1,8 @@
-# 🛰️ Multi-Layer Anti-Drone Defense System
+# Multi-Layer Anti-Drone Defense System
 
 **A real-time, sensor-fused counter-UAS platform combining dual-model computer vision (RGB + thermal YOLOv8), Kalman/IoU-based multi-object tracking, PID visual servoing, and a novel NMSE threat-prioritization engine — running on a laptop and Arduino, no Raspberry Pi required.**
 
 The system detects, classifies, tracks, and prioritizes aerial threats (drones vs. birds/planes/helicopters) in real time by fusing RGB and thermal camera feeds, then drives a pan-tilt gimbal and radar sweep via Arduino to engage the highest-priority target — with an optional reinforcement-learning layer that adaptively tunes the tracking controller online.
-
-<p align="center">
-  <img src="assets/training_results.png" alt="Training results" width="850">
-</p>
 
 ---
 
@@ -43,15 +39,15 @@ Both the RGB and thermal camera feeds are processed **every frame, simultaneousl
 
 ## Key Features
 
-- 🎯 **Dual-model detection** — 4-class RGB YOLOv8 (Bird, Drone, Airplane, Helicopter) + 2-class thermal YOLOv8, running concurrently
-- 🔗 **Calibrated sensor fusion** — similarity-transform alignment (rotation + scale + translation) between thermal and RGB, with IoU-based box matching and confidence boosting on cross-sensor agreement
-- 🧭 **Multi-object tracking** — persistent track IDs via a centroid/IoU tracker (swappable for DeepSORT)
-- ⚖️ **NMSE priority queue** — a genuine normalized mean-squared-error scoring function ranks all live tracks by distance, closing speed, confidence, and size to decide *who gets engaged first*
-- 🎮 **Full PID visual servoing** — proportional-integral-derivative gimbal control with anti-windup clamping, replacing a pure-proportional controller
-- 🤖 **Optional RL gain auto-tuner** — a lightweight tabular Q-learning agent adaptively nudges PID gains at runtime, with engagement decisions kept fully deterministic and auditable
-- 📡 **Radar + camera fusion** — ultrasonic (swappable for mmWave IWR1843) distance sweep independent of the camera gimbal
-- 🖥️ **Live dual-feed view** — thermal picture-in-picture overlay on the RGB stream
-- 📝 **CSV event logging** for post-run analysis
+- **Dual-model detection** — 4-class RGB YOLOv8 (Bird, Drone, Airplane, Helicopter) + 2-class thermal YOLOv8, running concurrently
+- **Calibrated sensor fusion** — similarity-transform alignment (rotation + scale + translation) between thermal and RGB, with IoU-based box matching and confidence boosting on cross-sensor agreement
+- **Multi-object tracking** — persistent track IDs via a centroid/IoU tracker (swappable for DeepSORT)
+- **NMSE priority queue** — a genuine normalized mean-squared-error scoring function ranks all live tracks by distance, closing speed, confidence, and size to decide *who gets engaged first*
+- **Full PID visual servoing** — proportional-integral-derivative gimbal control with anti-windup clamping, replacing a pure-proportional controller
+- **Optional RL gain auto-tuner** — a lightweight tabular Q-learning agent adaptively nudges PID gains at runtime, with engagement decisions kept fully deterministic and auditable
+- **Radar + camera fusion** — ultrasonic (swappable for mmWave IWR1843) distance sweep independent of the camera gimbal
+- **Live dual-feed view** — thermal picture-in-picture overlay on the RGB stream
+- **CSV event logging** for post-run analysis
 
 ## System Architecture
 
@@ -78,9 +74,6 @@ Both the RGB and thermal camera feeds are processed **every frame, simultaneousl
 
 ## Project Structure
 
-<p align="center">
-  <img src="assets/project_structure.png" alt="Project folder structure" width="420">
-</p>
 
 ```
 anti_drone_system/
@@ -191,15 +184,8 @@ Press `q` to quit — the `finally` block safely disables the laser/jammer and r
 ## Demo Video
 
 <!--
-GitHub renders video files uploaded directly to an Issue/PR/Discussion, or you can
-link to YouTube. Two common options below — keep whichever applies and delete the other.
+https://github.com/user-attachments/assets/fdaeaf48-755c-4317-a3a3-448422952287
 -->
-
-📹 **Watch the system in action:**
-
-[![Watch the demo](assets/training_results.png)](https://youtu.be/YOUR-VIDEO-ID)
-
-> Replace `YOUR-VIDEO-ID` with your uploaded YouTube/Drive link, or drag-and-drop the `.mp4` directly into a GitHub Issue/PR comment and copy the generated `https://github.com/user-attachments/assets/...` URL here — GitHub will embed it as a playable inline video in the README.
 
 ## Roadmap
 
@@ -208,7 +194,3 @@ link to YouTube. Two common options below — keep whichever applies and delete 
 - [ ] Empirically tune `PRIORITY_WEIGHTS`, PID gains, and fusion weights
 - [ ] Extended RL gain-tuner sessions before live demos
 - [ ] Confirm thermal dataset class alignment (2-class `data.yaml`)
-
-## License
-
-Specify your license here (e.g. MIT).
