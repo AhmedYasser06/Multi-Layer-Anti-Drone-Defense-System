@@ -1,20 +1,3 @@
-"""
-Full pipeline entry point. Run with: python -m anti_drone_pipeline.main
-
-State machine:
-  SCANNING   -> Arduino radar sweep active.
-  SLEWING    -> An object crossed RADAR_TRIGGER_RANGE_CM; gimbal jumps to
-                that angle and radar sweep is paused.
-  ENGAGING   -> RGB and thermal cameras are BOTH read every frame (no more
-                day/night single-source switching); their detections are
-                fused (see fusion.py) before reaching the tracker. Tracker
-                + NMSE priority queue pick the top threat, PID pan-tilt
-                (optionally RL-gain-tuned) servos onto it.
-  LOCKED     -> Target held within LOCK_PIXEL_RADIUS for LOCK_FRAMES_REQUIRED
-                consecutive frames -> laser fires, event logged.
-  (loses target for TRACK_LOST_FRAMES -> back to SCANNING, radar resumes)
-"""
-
 import time
 
 import cv2
