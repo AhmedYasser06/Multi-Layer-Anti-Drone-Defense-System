@@ -1,27 +1,3 @@
-"""
-Layer 3 fine pointing: converts pixel error (target center vs frame center)
-into incremental pan/tilt servo commands.
-
-Full PID now (report Section 11 future-work item: "PID Controller for
-Pan-Tilt", upgraded from the pure-proportional controller in the original
-prototype):
-  - P term: reacts to the current pixel error, same as before.
-  - I term: accumulates error over time so a target that sits with a
-    small but persistent offset (e.g. a slow steady drift the P term
-    alone never fully closes) still gets pulled to center instead of
-    settling with steady-state lag. Clamped (anti-windup) so a long
-    period with no target doesn't leave a huge accumulated term that
-    then whips the gimbal once a target reappears.
-  - D term: reacts to how fast the error is changing, damping the
-    overshoot/oscillation a P-only or PI controller tends to produce on
-    a fast-moving target.
-
-Gains (self.kp_x/kp_y etc.) are plain instance attributes, not just
-locals read from config each call -- this lets rl_tuner.py adjust them
-at runtime (see RL_GAIN_TUNING_ENABLED in config.py) without touching
-this file.
-"""
-
 import time
 
 from . import config
