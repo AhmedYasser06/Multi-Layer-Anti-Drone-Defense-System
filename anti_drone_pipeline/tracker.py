@@ -87,11 +87,6 @@ class CentroidIoUTracker:
         return self.tracks
 
 
-# ---------------------------------------------------------------------------
-# Optional: real Deep SORT backend. Requires: pip install deep-sort-realtime
-# Same public interface (`update(fused_detections) -> Dict[int, Track]`) so
-# main.py doesn't need to change if you switch trackers.
-# ---------------------------------------------------------------------------
 class DeepSortTracker:
     def __init__(self):
         from deep_sort_realtime.deepsort_tracker import DeepSort
