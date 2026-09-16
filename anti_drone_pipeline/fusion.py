@@ -1,35 +1,3 @@
-"""
-Layer 2/3 sensor fusion: RGB and thermal cameras now run SIMULTANEOUSLY,
-every frame -- there is no more day/night switch that runs only one
-camera+model pair at a time. Both feeds are always read, both models
-always run, and their detections are merged here before anything reaches
-the tracker.
-
-Why fuse instead of just handing the tracker two independent detection
-lists:
-  - A drone that's washed out in RGB (dusk, backlight, glare, camouflage
-    paint) can still carry a strong thermal signature from its motors,
-    and vice versa (thermal false-positives like sun-heated rooftops
-    don't show up as a bird/drone shape in RGB). Fusing raises confidence
-    when both agree and still catches the target when only one sensor
-    fires.
-  - Without fusion, the same physical drone would spawn two overlapping
-    tracks (one from the RGB camera's box, one from the thermal camera's
-    box), which would confuse the tracker's ID assignment and double-
-    count it in the priority queue.
-
-How the two camera views are aligned:
-  Thermal and RGB sensors are physically offset on the rig, so a pixel in
-  the thermal frame is NOT at the same (x, y) in the RGB frame. We handle
-  this the same way tools/calibrate_thermal_offset.py already documents:
-    1. Preferred: a calibrated 2x3 similarity transform (rotation +
-       uniform scale + translation), solved from several point
-       correspondences, loaded from config.THERMAL_TRANSFORM_PATH.
-    2. Fallback (no calibration file yet): a constant pixel offset from
-       config.THERMAL_OFFSET_X / THERMAL_OFFSET_Y. Fine for a rough demo,
-       but will drift near frame edges -- calibrate before real testing.
-"""
-
 import json
 import os
 from typing import List
