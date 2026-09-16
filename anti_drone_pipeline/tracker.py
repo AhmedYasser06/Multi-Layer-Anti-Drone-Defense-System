@@ -1,12 +1,3 @@
-"""
-Multi-object tracker that assigns persistent IDs to fused detections across
-frames. Ships with a lightweight centroid+IoU tracker (zero extra
-dependencies, good enough for a handful of simultaneous targets at
-25-30 FPS). If you want to swap in real Deep SORT (appearance embeddings,
-better under occlusion), install `deep-sort-realtime` and see the
-DeepSortTracker class at the bottom -- same interface, drop-in replacement.
-"""
-
 import time
 from dataclasses import dataclass, field
 from typing import Dict, List
