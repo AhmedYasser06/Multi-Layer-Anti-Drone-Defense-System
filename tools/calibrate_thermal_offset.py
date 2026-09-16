@@ -1,15 +1,6 @@
 """
 Thermal -> RGB spatial calibration tool.
 
-WHY a constant (dx, dy) offset isn't enough:
-A fixed offset is only correct if both cameras have identical focal length,
-identical sensor size, and are perfectly parallel. Cheap thermal + RGB
-camera pairs almost never match on all three -- so a target near the frame
-edge will be misaligned even after you tune the offset for the center.
-This tool instead fits a similarity transform (rotation + uniform scale +
-translation) from several point correspondences, which handles focal
-length mismatch and slight camera rotation, not just a shift.
-
 HOW TO USE:
   1. Set up your final camera mounting first (this calibration is only
      valid for a fixed camera rig -- redo it if you physically move either
