@@ -1,30 +1,3 @@
-"""
-Simultaneous RGB + thermal detection.
-
-BOTH cameras and BOTH models run every frame now -- there is no day/night
-mode that picks a single active sensor:
-  RGB     -> RGB camera + RGB multiclass model (Bird / Drone / AirPlane / Helicopter)
-  Thermal -> Thermal camera + thermal model (2 raw classes, BOTH forced to "Drone")
-
-The two detection lists are handed to fusion.SensorFusion (see fusion.py)
-every frame, which projects thermal boxes into RGB pixel space and merges
-any pair that refers to the same physical object. What still matters
-here, per-sensor, before fusion happens:
-
-  - RGB: only the "Drone" class is a threat. Bird/AirPlane/Helicopter are
-    still detected and drawn (useful to prove to judges the system isn't
-    just laser-locking anything that moves) but excluded from the
-    priority queue via config.THREAT_CLASSES.
-
-  - Thermal: whatever its 2 raw class labels actually are (drone/bird,
-    hot-object/cold-object, whatever the dataset used), BOTH get
-    collapsed to the canonical "Drone" label before reaching fusion --
-    per your instruction to treat both thermal classes as drone. If the
-    thermal model fires two overlapping boxes on the same physical object
-    (one from each class), a dedup pass keeps only the higher-confidence
-    box so fusion doesn't see duplicate thermal boxes for one target.
-"""
-
 from dataclasses import dataclass
 from typing import List
 
