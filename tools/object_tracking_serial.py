@@ -1,13 +1,11 @@
 """
 Object Tracking -> Angle -> Serial
 -----------------------------------
-1. Detects an object in the webcam feed (color-based detection by default).
+1. Detects an object in the webcam feed.
 2. Gets its (x, y) pixel center.
 3. Converts (x, y) into pan/tilt servo angles.
-4. Sends the angles over a serial port (e.g., to an Arduino driving 2 servos).
+4. Sends the angles over a serial port.
 
-Requirements:
-    pip install opencv-python numpy pyserial
 """
 
 import cv2
