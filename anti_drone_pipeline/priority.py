@@ -1,7 +1,6 @@
 """
 Layer 4 — NMSE-based Priority Targeting.
 
-Definition used here (matches the report's Section 8.5 factor list):
 For each tracked target we build a 4-feature vector, normalize every
 feature to [0, 1] where 1 = "maximally threatening", then score how close
 that vector is to the ideal maximum-threat vector (1,1,1,1) using a
@@ -11,11 +10,7 @@ that vector is to the ideal maximum-threat vector (1,1,1,1) using a
 
 This is exactly a normalized MSE between the target's feature vector and
 the "worst case" reference vector, inverted so score=1 means highest
-threat and score=0 means lowest. It naturally punishes targets that are
-weak on any single high-weight factor (squared term) rather than just
-averaging, which is what you want for triage: a target that's very close
-but barely a confident detection shouldn't outrank a fast, close,
-high-confidence one just because of a simple average.
+threat and score=0 means lowest. 
 
 Features:
   f_distance : 1 - (dist_to_center / frame_diagonal)      -> closer = higher
