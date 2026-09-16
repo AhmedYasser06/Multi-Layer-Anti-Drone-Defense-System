@@ -1,9 +1,3 @@
-"""
-Thin wrapper around pyserial. Runs a background thread that continuously
-reads lines from the Arduino so radar samples never block the main
-detection loop, and exposes simple send_* methods for commands.
-"""
-
 import threading
 import queue
 import time
